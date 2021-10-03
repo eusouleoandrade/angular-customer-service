@@ -41,7 +41,6 @@ export class CustomerService {
 
   // Post one Customer
   saveCustomer(customer : Customer) : Observable<Customer>{
-
     return this.httpClient.post<Customer>(this.url, JSON.stringify(customer), this.httpOptions)
       .pipe(
         retry(2),
@@ -60,9 +59,9 @@ export class CustomerService {
   }
 
   // Delete one Customer
-  deleteCustomer(id : string){
+  deleteCustomer(customer : Customer){
 
-    return this.httpClient.delete<Customer>(this.url + '/' + id, this.httpOptions)
+    return this.httpClient.delete<Customer>(this.url + '/' + customer.id, this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -81,7 +80,7 @@ export class CustomerService {
     } else {
 
       // Error server side
-      errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
+      errorMessage = `Error code: ${error.status}, ` + `menssagem: ${error.message}`;
     }
 
     console.log(errorMessage);
