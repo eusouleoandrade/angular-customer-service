@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
 
   public customers: Customer[] = [];
   public customer : Customer = {} as Customer;
+  public screenMode: string = "list"; // list, edit, add
 
   constructor(private customerService: CustomerService) { }
 
@@ -58,6 +59,7 @@ export class AppComponent implements OnInit {
       this.customer.lastName = customer.lastName;
       this.customer.email = customer.email;
       this.customer.phone = customer.phone;
+      this.changeScreenMode('edit');
     }
 
     // Clean form
@@ -66,5 +68,11 @@ export class AppComponent implements OnInit {
       this.getCustomers();
       form.resetForm();
       this.customer = {}  as Customer;
+      this.changeScreenMode('list');
+    }
+
+    // Change screen mode
+    public changeScreenMode(mode : string){
+      this.screenMode = mode;
     }
 }
