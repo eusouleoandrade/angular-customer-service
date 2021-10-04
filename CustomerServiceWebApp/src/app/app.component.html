@@ -43,7 +43,8 @@
   </div>
 
   <div class="card add-car" *ngIf="screenMode === 'add' || screenMode === 'edit'">
-    <h5 class="card-header">Add / Update Customer</h5>
+    <h5 class="card-header" *ngIf="screenMode === 'add'">Add Customer</h5>
+    <h5 class="card-header" *ngIf="screenMode === 'edit'">Update Customer</h5> 
     <div class="card-body">
       <form id="add-form" (ngSubmit)="f.form.valid && saveCustomer(f)" #f="ngForm" novalidate>
         <div class="form-group">
