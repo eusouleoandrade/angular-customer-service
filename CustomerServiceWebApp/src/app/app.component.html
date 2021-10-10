@@ -4,7 +4,7 @@
   </ol>
 </nav>
 <div class="container">
-  <div class="card list-car">
+  <div class="card list-car animated fadeIn" *ngIf="screenMode==='list'">
     <h5 class="card-header">Customers list</h5>
     <div class="card-body">
       <figure>
@@ -41,8 +41,7 @@
       <a href="#" class="btn btn-primary" (click)="changeScreenMode('add')">New customer</a>
     </div>
   </div>
-
-  <div class="card add-car" *ngIf="screenMode === 'add' || screenMode === 'edit'">
+  <div class="card add-car animated fadeIn" *ngIf="screenMode === 'add' || screenMode === 'edit'">
     <h5 class="card-header" *ngIf="screenMode === 'add'">Add Customer</h5>
     <h5 class="card-header" *ngIf="screenMode === 'edit'">Update Customer</h5> 
     <div class="card-body">
